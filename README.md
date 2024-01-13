@@ -27,3 +27,12 @@ Right now it needs the go toolchain for installing.
 - `-conversation`: Displays the current conversation. Use this flag without any arguments.
 
 - `-help`: Show this help
+
+
+# TODO 
+
+- [ ] Maybe make this more fancy with these:
+  - https://github.com/charmbracelet/bubbletea 
+  - https://github.com/charmbracelet/lipgloss
+- [ ] After the previous, allow for selecting multiple chats. Maybe the goal here is to replace my previous tool, [sira](https://github.com/alarbada/sira)
+- [ ] Add a pricing page with a monthly and yearly subscription, of course
