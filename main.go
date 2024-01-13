@@ -28,6 +28,11 @@ var (
 	flagConversation      = flag.Bool("conversation", false, "Show the current conversation")
 )
 
+func init() {
+	flag.BoolVar(flagClearConversation, "cl", false, "Clear the conversation history (shorthand)")
+	flag.BoolVar(flagConversation, "co", false, "Show the current conversation (shorthand)")
+}
+
 var configFilePath string
 
 func init() {
