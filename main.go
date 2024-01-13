@@ -156,6 +156,8 @@ func main() {
 		prompt = strings.TrimSpace(prompt)
 		if prompt == "" {
 			fmt.Println("Please provide a prompt")
+			fmt.Println()
+			flag.Usage()
 			return
 		}
 
