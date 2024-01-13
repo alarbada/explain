@@ -206,9 +206,9 @@ func main() {
 }
 
 type explainConfig struct {
-	OpenaiApiKey string    `json:"openai_api_key"`
-	Model        string    `json:"model"`
-	Conversation []Msg     `json:"conversation"`
+	OpenaiApiKey string `json:"openai_api_key"`
+	Model        string `json:"model"`
+	Conversation []Msg  `json:"conversation"`
 }
 
 func (this *explainConfig) readFromFile() (err error) {
@@ -252,14 +252,6 @@ func (this explainConfig) save() (err error) {
 	}
 
 	return os.WriteFile(configFilePath, configfileBs, 0644)
-}
-
-func (this explainConfig) addMessages(newMessages []Msg) (err error) {
-	defer wrapErr(&err)
-
-	this.Conversation = append(this.Conversation, newMessages...)
-
-	return this.save()
 }
 
 var models = []string{
