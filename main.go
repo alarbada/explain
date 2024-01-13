@@ -9,7 +9,6 @@ import (
 	"io"
 	"os"
 	"strings"
-	"time"
 
 	"github.com/sashabaranov/go-openai"
 )
@@ -209,7 +208,6 @@ func main() {
 type explainConfig struct {
 	OpenaiApiKey string    `json:"openai_api_key"`
 	Model        string    `json:"model"`
-	UpdatedAt    time.Time `json:"updated_at"`
 	Conversation []Msg     `json:"conversation"`
 }
 
@@ -226,21 +224,12 @@ func (this *explainConfig) readFromFile() (err error) {
 		return err
 	}
 
-	if this.UpdatedAt.IsZero() {
-		this.UpdatedAt = time.Now()
-	}
-
 	return nil
-}
-
-func (this explainConfig) shouldRenewMessages() bool {
-	return this.UpdatedAt.Add(24 * time.Hour).Before(time.Now())
 }
 
 func (this *explainConfig) clearConversation() (err error) {
 	defer wrapErr(&err)
 
-	this.UpdatedAt = time.Now()
 	this.Conversation = []Msg{}
 
 	return this.save()
@@ -250,7 +239,6 @@ func (this *explainConfig) setDefault() {
 	*this = explainConfig{
 		OpenaiApiKey: "",
 		Model:        "gpt-4",
-		UpdatedAt:    time.Now(),
 		Conversation: []openai.ChatCompletionMessage{},
 	}
 }
