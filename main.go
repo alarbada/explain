@@ -133,8 +133,9 @@ func main() {
 			fmt.Print(colorReset)
 
 			fmt.Printf("\n%v\n", msg.Content)
+
+			fmt.Println()
 		}
-		fmt.Println()
 
 		return
 	}
